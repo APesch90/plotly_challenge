@@ -17,7 +17,7 @@ function buildPlots(id) {
         to show up on plot
     4. Run barChart and bubChart to create plots.
     */
-    d3.json("samples.json").then((data) => {
+    d3.json("raw_data/samples.json").then((data) => {
         var sampleData = data.samples.filter(item => item.id === id)[0];
         var topTenSampValues = sampleData.sample_values.slice(0, 10);
         var topTenSVReverse = topTenSampValues.reverse();
@@ -104,7 +104,7 @@ function barChart(topTenSVReverse, otuAddition, topTenOtuLabels) {
   // Create a function for the metadata 
   function buildDemographics(id) {
       // Extract data from the json file
-      d3.json("samples.json").then((data) => {
+      d3.json("raw_data/samples.json").then((data) => {
       // Grab the metadata and assign to a variable
           var demographics = data.metadata;
           // Filter by ID
@@ -130,7 +130,7 @@ function barChart(topTenSVReverse, otuAddition, topTenOtuLabels) {
       var dropDownMenu = d3.select("#selDataset");
    
       // Read JSON data based on user's selection 
-      d3.json("samples.json").then((data)=> {
+      d3.json("raw_data/samples.json").then((data)=> {
           // Fetching user-selected data
           data.names.forEach(function(name) {
               /* Append new element called "option", setting text of the option 
